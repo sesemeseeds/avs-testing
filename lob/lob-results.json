@@ -1,0 +1,57 @@
+{
+    "id": "us_ver_3e27ba966bba45908715",
+    "recipient": "",
+    "primary_line": "2900 READING RD",
+    "secondary_line": "",
+    "urbanization": "",
+    "last_line": "CINCINNATI OH 45206-1119",     
+    "deliverability": "deliverable",
+    "valid_address": true,
+    "components": {
+        "primary_number": "2900",
+        "street_predirection": "",
+        "street_name": "READING",
+        "street_suffix": "RD",
+        "street_postdirection": "",
+        "secondary_designator": "",
+        "secondary_number": "",
+        "pmb_designator": "",
+        "pmb_number": "",
+        "extra_secondary_designator": "",        
+        "extra_secondary_number": "",
+        "city": "CINCINNATI",
+        "state": "OH",
+        "zip_code": "45206",
+        "zip_code_plus_4": "1119",
+        "zip_code_type": "standard",
+        "delivery_point_barcode": "452061119001",
+        "address_type": "commercial",
+        "record_type": "street",
+        "default_building_address": false,       
+        "county": "HAMILTON",
+        "county_fips": "39061",
+        "carrier_route": "C017",
+        "carrier_route_type": "city_delivery",   
+        "latitude": 39.132382,
+        "longitude": -84.497007
+    },
+    "deliverability_analysis": {
+        "dpv_confirmation": "Y",
+        "dpv_cmra": "N",
+        "dpv_vacant": "N",
+        "dpv_active": "Y",
+        "dpv_footnotes": [
+            "AA",
+            "BB"
+        ],
+        "ews_match": false,
+        "lacs_indicator": "",
+        "lacs_return_code": "",
+        "suite_return_code": ""
+    },
+    "lob_confidence_score": {
+        "score": 100,
+        "level": "high"
+    },
+    "object": "us_verification"
+}

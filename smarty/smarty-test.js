@@ -1,0 +1,59 @@
+// SMARTY VERIFYING US STREET ADDRESSES SDK
+// from https://github.com/smarty/smartystreets-javascript-sdk/blob/master/examples/us_street.js
+// documentation: https://www.smarty.com/docs/sdk/javascript#source
+
+const SmartyStreetsSDK = require("smartystreets-javascript-sdk");                                                    
+const SmartyStreetsCore = SmartyStreetsSDK.core;                                                                     
+const Lookup = SmartyStreetsSDK.usStreet.Lookup; 
+
+// for Server-to-server requests, use this code:
+let authToken = "QNaGsqwstizKUv7RQtoc";																		
+let authId = "2c63367f-c98c-e049-b989-3af3509f931d";							
+// const credentials = new SmartyCore.StaticCredentials(authId, authToken);
+
+// for client-side requests (browser/mobile), use this code:
+// let key = process.env.SMARTY_WEBSITE_KEY;
+// const credentials = new SmartyCore.SharedCredentials(key);
+
+// The appropriate license values to be used for your subscriptions
+// can be found on the Subscription page of the account dashboard.
+// https://www.smarty.com/docs/cloud/licensing
+// let clientBuilder = new SmartyCore.ClientBuilder(credentials).withBaseUrl("YOUR URL").withLicenses(["us-rooftop-geocoding-cloud"]);
+
+let clientBuilder = new SmartyStreetsCore.ClientBuilder(new SmartyStreetsCore.StaticCredentials(authId, authToken));
+let client = clientBuilder.buildUsStreetApiClient();
+
+// Documentation for input fields can be found at:
+// https://www.smarty.com/docs/us-street-api#input-fields
+
+console.log("Step 1. Make a lookup. (BTW, you can also send entire batches of lookups...)");
+
+let lookup1 = new Lookup();
+// lookup1.inputId = "24601";  // Optional ID from your system
+lookup1.addressee = "Emilio";
+lookup1.street = "2900 Reading Rd";
+// lookup1.street2 = "closet under the stairs";
+// lookup1.secondary = "APT 2";
+// lookup1.urbanization = "";  // Only applies to Puerto Rico addresses
+lookup1.city = "Cincinnati";
+lookup1.state = "OH";
+lookup1.zipCode = "45219";
+lookup1.maxCandidates = 3;
+lookup1.match = "invalid"; // "invalid" is the most permissive match,
+                           // this will always return at least one result even if the address is invalid.
+                           // Refer to the documentation for additional MatchStrategy options.
+
+console.log("Step 2. Send the lookup.");                                                                             
+client.send(lookup1)                                                                                                  
+        .then(handleSuccess)                                                                                         
+        .catch(handleError);                                                                                         
+                                                                                                                     
+function handleSuccess(response) {                                                                                   
+        console.log("Step 3. Show the resulting candidate addresses:");                                              
+        let lookup1 = response.lookups[0];                                                                            
+        lookup1.result.map(candidate => console.log(JSON.stringify(candidate)));        
+}                                                                                                                    
+                                                                                                                     
+function handleError(response) {                                                                                     
+        console.log(response);                                                                                       
+} 
