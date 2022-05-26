@@ -1,0 +1,53 @@
+{
+  "AddressValidateResponse": {
+    "Address": [
+      {
+        "Address1": [
+          "STE 6100"
+        ],
+        "Address2": [
+          "185 BERRY ST"
+        ],
+        "City": [
+          "SAN FRANCISCO"
+        ],
+        "State": [
+          "CA"
+        ],
+        "Zip5": [
+          "94107"
+        ],
+        "Zip4": [
+          "1741"
+        ],
+        "DeliveryPoint": [
+          "25"
+        ],
+        "CarrierRoute": [
+          "C001"
+        ],
+        "Footnotes": [
+          "AN"
+        ],
+        "DPVConfirmation": [
+          "Y"
+        ],
+        "DPVCMRA": [
+          "N"
+        ],
+        "DPVFootnotes": [
+          "AABB"
+        ],
+        "Business": [
+          "Y"
+        ],
+        "CentralDeliveryPoint": [
+          "N"
+        ],
+        "Vacant": [
+          "N"
+        ]
+      }
+    ]
+  }
+}
