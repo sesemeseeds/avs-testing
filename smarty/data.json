@@ -1,0 +1,16 @@
+{
+    "deliveryLine1": "2900 Reading Rd",
+    "lastLine": "Cincinnati OH 45206-1119",
+    "components": {
+      "primaryNumber": "2900",
+      "streetName": "Reading",
+      "streetSuffix": "Rd",
+      "cityName": "Cincinnati",
+      "defaultCityName": "Cincinnati",
+      "state": "OH",
+      "zipCode": "45206",
+      "plus4Code": "1119"
+    },
+    "countyName": "Hamilton",
+    "vacant": "N"
+}

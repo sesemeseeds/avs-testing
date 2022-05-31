@@ -28,32 +28,48 @@ let client = clientBuilder.buildUsStreetApiClient();
 
 console.log("Step 1. Make a lookup. (BTW, you can also send entire batches of lookups...)");
 
-let lookup1 = new Lookup();
-// lookup1.inputId = "24601";  // Optional ID from your system
-lookup1.addressee = "Emilio";
-lookup1.street = "2900 Reading Rd";
-// lookup1.street2 = "closet under the stairs";
-// lookup1.secondary = "APT 2";
-// lookup1.urbanization = "";  // Only applies to Puerto Rico addresses
-lookup1.city = "Cincinnati";
-lookup1.state = "OH";
-lookup1.zipCode = "45219";
-lookup1.maxCandidates = 3;
-lookup1.match = "invalid"; // "invalid" is the most permissive match,
+let lookup = new Lookup();
+lookup.street = "2900 Reading Rd";
+lookup.city = "Cincinnati";
+lookup.state = "OH";
+lookup.zipCode = "45219";
+lookup.maxCandidates = 3;
+lookup.match = "invalid"; // "invalid" is the most permissive match,
                            // this will always return at least one result even if the address is invalid.
                            // Refer to the documentation for additional MatchStrategy options.
 
-console.log("Step 2. Send the lookup.");                                                                             
-client.send(lookup1)                                                                                                  
-        .then(handleSuccess)                                                                                         
-        .catch(handleError);                                                                                         
+console.log("Step 2. Send the lookup.");
+client.send(lookup)
+        .then(handleSuccess)
+        .catch(handleError);
                                                                                                                      
-function handleSuccess(response) {                                                                                   
-        console.log("Step 3. Show the resulting candidate addresses:");                                              
-        let lookup1 = response.lookups[0];                                                                            
-        lookup1.result.map(candidate => console.log(JSON.stringify(candidate)));        
+function handleSuccess(response) {
+        console.log("Step 3. Show the resulting candidate addresses:");
+        let lookup = response.lookups[0];
+        lookup.result.map(candidate => console.log(
+                createData(candidate)
+                ));
 }                                                                                                                    
                                                                                                                      
-function handleError(response) {                                                                                     
-        console.log(response);                                                                                       
-} 
+function handleError(response) 
+{
+        console.log(response)
+}
+
+function createData(candidate) {
+        let data = {};
+        data.deliveryLine = candidate['deliveryLine1'];
+        data.lastLine = candidate['lastLine'];
+        data.components = {};
+        data.components.primaryNumber = candidate['components']['primaryNumber'];
+        data.components.streetName = candidate['components']['streetName'];
+        data.components.streetSuffix = candidate['components']['streetSuffix'];
+        data.components.cityName = candidate['components']['cityName'];
+        data.components.defaultCityName = candidate['components']['defaultCityName'];
+        data.components.zipCode = candidate['components']['zipCode'];
+        data.components.plus4Code = candidate['components']['plus4Code'];
+        data.components.countyName = candidate['metadata']['countyName'];
+        data.components.deliveryPoint = candidate['components']['deliveryPoint'];
+        data.vacant = candidate['analysis']['vacant'];
+        return data;
+}
