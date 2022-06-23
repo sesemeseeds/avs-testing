@@ -45,22 +45,3 @@
       "footnotes": "A#"
     }
   }
-
-
-
-
-  {
-    "delivery_line": "2900 Reading Rd",
-    "last_line": "Cincinnati OH 45206-1119",
-    "components": {
-      "primary_number": "2900",
-      "street_name": "Reading",
-      "street_suffix": "Rd",
-      "city_name": "Cincinnati",
-      "state_abbreviation": "OH",
-      "zipcode": "45206",
-      "plus4_code": "1119",
-      "delivery_point": "00"
-    },
-    "vacant": "N"
-  }
