@@ -1,3 +1,14 @@
+// GOCART request -- same as Smarty request
+const GoCartRequest = 
+{
+    "street": "2900 reading rd",
+    "city": "cincinnati",
+    "state": "ohio",
+    "zipCode": "45219" 
+} 
+
+// ORIGINAL SMARTY response
+const ORIGINALreponse = 
 {
     "inputIndex": 0,
     "candidateIndex": 0,
@@ -47,9 +58,9 @@
   }
 
 
-
-
-  {
+// SCRAPED DATA for GoCart standards
+const SCRAPEDresponse = 
+{
     "delivery_line": "2900 Reading Rd",
     "last_line": "Cincinnati OH 45206-1119",
     "components": {
@@ -64,3 +75,28 @@
     },
     "vacant": "N"
   }
+
+
+// function in AWS Lambda API
+
+function ParseData(data){
+    if(!Object.keys(data).length){ return {}; }
+    
+    let res = {};
+    res.delivery_line = data[0]['delivery_line_1'];
+    res.last_line = data[0]['last_line'];
+    res.components = {};
+    res.components.primary_number = data[0]['components']['primary_number'];
+    res.components.street_name = data[0]['components']['street_name'];
+    res.components.street_suffix = data[0]['components']['street_suffix'];
+    res.components.city_name = data[0]['components']['default_city_name'];
+    res.components.state_abbreviation = data[0]['components']['state_abbreviation'];
+    res.components.zipcode = data[0]['components']['zipcode'];
+    res.components.plus4_code = data[0]['components']['plus4_code'];
+    res.components.delivery_point = data[0]['components']['delivery_point'];
+    
+    if(data[0]['analysis']['active'] == 'Y') { res.vacant = 'N'; }
+    else { res.vacant = data[0]['analysis']['active']; }
+
+    return(res);
+}

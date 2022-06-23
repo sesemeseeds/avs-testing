@@ -29,7 +29,7 @@ let client = clientBuilder.buildUsStreetApiClient();
 console.log("Step 1. Make a lookup. (BTW, you can also send entire batches of lookups...)");
 
 let lookup = new Lookup();
-lookup.street = "2900 Reading Rd";
+lookup.street = "99 ortiz pl";
 lookup.city = "Cincinnati";
 lookup.state = "OH";
 lookup.zipCode = "45219";
