@@ -1,0 +1,136 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Address Validation API",
+    "description": "Address validation API used to manage merchant address inputs \n",
+    "license": {
+      "name": "Apache 2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+    },
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "https://virtserver.swaggerhub.com/GoCartPay/gocart-address-validation-api/1.0.0",
+      "description": "SwaggerHub API Auto Mocking"
+    }
+  ],
+  "tags": [
+    {
+      "name": "Address",
+      "description": "Smarty's address validation API\n"
+    }
+  ],
+  "paths": {
+    "/addressValidations": {
+      "post": {
+        "tags": [
+          "Address"
+        ],
+        "summary": "Sends data to the address validation API",
+        "description": "Send GoCart payload to address validation API and recieve a canonical response <br>\nhttps://www.smarty.com/docs/cloud/us-street-api\n",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RequestModel"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successfully completed execution",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseModel"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "RequestModel": {
+        "required": [
+          "address1",
+          "address2",
+          "city",
+          "country",
+          "state",
+          "zipCode"
+        ],
+        "type": "object",
+        "properties": {
+          "address1": {
+            "type": "string",
+            "example": "2900 Reading Rd"
+          },
+          "address2": {
+            "type": "string",
+            "example": "Suite 420"
+          },
+          "city": {
+            "type": "string",
+            "example": "Cincinnati"
+          },
+          "zipCode": {
+            "type": "string",
+            "example": "45219"
+          },
+          "state": {
+            "type": "string",
+            "example": "Ohio"
+          },
+          "country": {
+            "type": "string",
+            "example": "US"
+          }
+        }
+      },
+      "ResponseModel": {
+        "type": "object",
+        "properties": {
+          "address1": {
+            "type": "string",
+            "example": "2900 Reading Rd"
+          },
+          "address2": {
+            "type": "string",
+            "example": "Suite 420"
+          },
+          "city": {
+            "type": "string",
+            "example": "Cincinnati"
+          },
+          "state": {
+            "type": "string",
+            "example": "OH"
+          },
+          "country": {
+            "type": "string",
+            "example": "US"
+          },
+          "zip": {
+            "type": "string",
+            "example": "45206"
+          },
+          "zip-plus4": {
+            "type": "string",
+            "example": "1119"
+          },
+          "vacant": {
+            "type": "string",
+            "description": "Response parameter that corresponds to whether or not the address is active or not, prescribed by the API services' confidence level\n",
+            "example": "N"
+          }
+        }
+      }
+    }
+  }
+}
