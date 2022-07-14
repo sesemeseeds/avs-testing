@@ -1,5 +1,19 @@
-(async function main () {
 
+
+var http = require('http');
+var static = require('node-static');
+var file = new static.Server();
+
+http.createServer(function (req, res) {
+		file.serve(req, res);
+}).listen(1337, '0.0.0.0');
+
+const os = require("os");
+const hostName = os.hostname();
+
+
+(async function main () {
+	console.log(os.hostName)
 	// SMARTY VERIFYING US STREET ADDRESSES SDK from https://github.com/smarty/smartystreets-javascript-sdk/blob/master/examples/us_street.js documentation: https://www.smarty.com/docs/sdk/javascript#source
 
 	const SmartySDK = require("smartystreets-javascript-sdk");
@@ -7,7 +21,7 @@
 	const Lookup = SmartySDK.usAutocompletePro.Lookup;
 
 	// US Autocomplete Pro only supports using Website Keys
-	let key = 122473637536740147;
+	let key = "0Qg3JN7UEG3WVbziXluV";
 	const credentials = new SmartyCore.SharedCredentials(key);
 
 	// The appropriate license values to be used for your subscriptions can be found on the Subscription page of the account dashboard. https://www.smarty.com/docs/cloud/licensing
