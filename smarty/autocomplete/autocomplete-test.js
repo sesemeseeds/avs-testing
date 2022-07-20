@@ -1,15 +1,4 @@
-
-
-var http = require('http');
-var static = require('node-static');
-var file = new static.Server();
-
-http.createServer(function (req, res) {
-		file.serve(req, res);
-}).listen(1337, '0.0.0.0');
-
-const os = require("os");
-const hostName = os.hostname();
+// DOES NOT WORK CORRECTLY AT THE MOMENT
 
 
 (async function main () {

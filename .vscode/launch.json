@@ -3,6 +3,21 @@
         {
             "type": "aws-sam",
             "request": "direct-invoke",
+            "name": "smarty-autocomplete:index.handler (nodejs16.x)",
+            "invokeTarget": {
+                "target": "code",
+                "projectRoot": "${workspaceFolder}/smarty/autocomplete/smarty-autocomplete",
+                "lambdaHandler": "index.handler"
+            },
+            "lambda": {
+                "runtime": "nodejs16.x",
+                "payload": {},
+                "environmentVariables": {}
+            }
+        },
+        {
+            "type": "aws-sam",
+            "request": "direct-invoke",
             "name": "usps-test-function:index.handler (nodejs16.x)",
             "invokeTarget": {
                 "target": "code",
