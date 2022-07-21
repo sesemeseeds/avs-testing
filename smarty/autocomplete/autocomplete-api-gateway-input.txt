@@ -4,8 +4,6 @@
 
 "input": "{ \"search\": \"123 main\"}",
 
-"name": "testing720221",
-
 "stateMachineArn": "arn:aws:states:us-east-2:993126196286:stateMachine:ExpressAddressAutocomplete"
 
 }
