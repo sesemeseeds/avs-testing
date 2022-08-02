@@ -1,0 +1,13 @@
+<div style="text-align: center; margin: 3% 30%">
+  <h1>GoCart Address API Demo</h1>
+    <p>Address Validation</p>
+      <div class="searchbar">
+      <div class="bar">
+        <input type="text" #searchbar [(ngModel)]="searchAutocomplete" (keyup)="fetchAddressAutocomplete($event)" placeholder="Enter the name of your address" />
+      </div>
+    <ul>
+      <li *ngFor="let show of searchAutocompleteResult">
+        <p> {{ show.name }}</p>
+      </li>
+    </ul>
+</div>
